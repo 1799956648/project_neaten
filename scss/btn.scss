@@ -1,0 +1,29 @@
+	
+.base-btn {
+	display: flex;
+	min-width: 250rpx;
+	height: 80rpx;
+	justify-content: center;
+	align-items: center;
+	border-radius: 40px;
+	color: #fff;
+	@extend .box-shadow;
+}
+
+// 保存按钮
+.save-btn {
+	@extend .base-btn;
+	@extend .theme-color;
+}
+
+/* 审核按钮 */
+.audit-btn {
+	@extend .base-btn;
+	@extend .bg-shenhe;
+}
+
+/* 审核按钮 */
+.invalid-btn {
+	@extend .base-btn;
+	@extend .bg-zuofei;
+}

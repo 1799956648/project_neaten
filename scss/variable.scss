@@ -1,0 +1,332 @@
+/* 全局变量 */
+
+// tabbar高度
+$tabbarHeight: 112rpx;
+
+// // 背景颜色
+// $pageBackgroundColor: #f6f6f6;
+
+$border-size: 1px solid #eee;
+
+// // 点击active
+// $activeBackgroundColor: $pageBackgroundColor;
+
+/* 定位 */
+$position: (
+	(
+		name: fixed,
+		value: fixed
+	),
+	(
+		name: static,
+		value: static
+	),
+	(
+		name: relative,
+		value: relative
+	),
+	(
+		name: absolute,
+		value: absolute
+	),
+);
+
+/* margin 为0 */
+$marginNone: (
+	(
+		name: top,
+		value: 0
+	),
+	(
+		name: right,
+		value: 0
+	),
+	(
+		name: bottom,
+		value: 0
+	),
+	(
+		name: left,
+		value: 0
+	),
+);
+
+/* padding 为0 */
+$paddingNone: (
+	(
+		name: top,
+		value: 0
+	),
+	(
+		name: right,
+		value: 0
+	),
+	(
+		name: bottom,
+		value: 0
+	),
+	(
+		name: left,
+		value: 0
+	),
+);
+
+/* 文本换行 */
+$whiteSpace: (
+	(
+		name: normal,
+		value: normal
+	),
+	(
+		name: nowrap,
+		value: nowrap
+	),
+);
+
+/* 色块 */
+$color-block: (
+	(
+		name: seka,
+		color: #21E2DA,
+		bgColor: #E0FFF8
+	),
+	(
+		name: jianyang,
+		color: #8E75AC,
+		bgColor: #F5EFFF
+	),
+	(
+		name: yangban,
+		color: #4AC157,
+		bgColor: #E1FFE5
+	),
+	(
+		name: dahuo,
+		color: #3D9CFA,
+		bgColor: #E3EFFF
+	),
+	(
+		name: caijizhon,
+		color: #F6862B,
+		bgColor: #FFEEE2
+	),
+	(
+		name: daicaiji,
+		color: #f36769,
+		bgColor: #ffe7e7
+	),
+	(
+		name: yijiedan,
+		color: #000000,
+		bgColor: #f4f4f4
+	)
+);
+
+/* 字体颜色 */
+$color: (
+	(
+		name: xcp,
+		value: #3D9CFA !important
+	),
+	(
+		name: blue,
+		value: #38B9FD !important
+	),
+	(
+		name: gray,
+		value: #858585
+	),
+	(
+		name: brown,
+		value: #616161
+	),
+	(
+		name: login,
+		value: #555555
+	),
+	(
+		name: red,
+		value: #FF3834 !important
+	),
+	(
+		name: orange,
+		value: #F8A25B
+	),
+	(
+		name: gray2,
+		value: #858585 !important
+	),
+	(
+		name: black,
+		value: #000000
+	),
+	(
+		name: qianhei,
+		value: rgba(0,0,0,0.7)
+	),
+	(
+		name: white,
+		value: #FFFFFF
+	),
+	(
+		name: qianlan,
+		value: #4d8fff
+	),
+	(
+		name: shenlan,
+		value: #3D9CFA
+	),
+	(
+		name: zonhui,
+		value: #676665
+	),
+	(
+		name: green,
+		value: #48c157
+	),
+	(
+		name: qianbai,
+		value: rgba(255,255,255,0.5),
+	),
+	(
+		name: org,
+		value: #F6862B,
+	)
+);
+
+/* 背景颜色 */
+$bg: (
+	(
+		name: blue,
+		value: #39B9FD
+	),
+	(
+		name: grgy,
+		value: #F6F6F6
+	),
+	(
+		name: white,
+		value: #FFFFFF
+	),
+	(
+		name: zuofei,
+		value: #828A9D
+	),
+	(
+		name: shenhe,
+		value: linear-gradient(to right, #FEC700, #FE8113)
+	),
+);
+
+/* 弹性水平方向对弈 */
+/* space-between 有重复，因为旧项目 space类名 用的不够语义化 */
+$justify: (
+	(
+		name: strat,
+		value: flex-start
+	),
+	(
+		name: center,
+		value: center
+	),
+	(
+		name: end,
+		value: flex-end
+	),
+	(
+		name: between,
+		value: space-between
+	),
+	(
+		name: space,
+		value: space-between
+	),
+	(
+		name: around,
+		value: space-around
+	)
+);
+
+/* 文字方向 */
+$align: (
+	(
+		name: left,
+		value: left
+	),
+	(
+		name: center,
+		value: center
+	),
+	(
+		name: right,
+		value: right
+	),
+);
+
+/* 弹性垂直方向对齐 */
+$alignItem: (
+	(
+		name: start,
+		value: flex-start
+	),
+	(
+		name: center,
+		value: center
+	),
+	(
+		name: end,
+		value: flex-start
+	),
+);
+
+/* 弹性换行 */
+$flexWrap: (
+	(
+		name: wrap,
+		value: wrap
+	),
+	(
+		name: nowrap,
+		value: nowrap 
+	),
+);
+
+/* 弹性盒子方向 */
+$flexDirection: (
+	(
+		name: row,
+		value: row
+	),
+	(
+		name: column,
+		value: column 
+	),
+);
+
+/* 边框线 */
+$border: (
+	(
+		name: top,
+		value: 1px solid rgba(147, 147, 147, 0.1)
+	),
+	(
+		name: right,
+		value: 1px solid rgba(144, 144, 144, 0.9)
+	),
+	(
+		name: bottom,
+		value: $border-size
+	),
+	(
+		name: left,
+		value: $border-size
+	),
+	(
+		name: 'bottom05',
+		value: 1rpx solid rgba(147, 147, 147, 0.1)
+	),
+	(
+		name: 'top1',
+		value: $border-size
+	),
+);

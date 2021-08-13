@@ -1,0 +1,290 @@
+@import './variable';
+@import './mixin';
+@import './function';
+
+/* 文字溢出隐藏 */
+.write-over {
+	@include textEllipsis;
+};
+
+/* 为了兼容弹性布局平均分布写法，配置 justify-space 类使用 */
+.space-evenly {
+	@include spaceEvenly(&);
+};
+
+/* flex弹性盒子布局 */
+.flex {
+	display: flex;
+};
+
+.flex-1 {
+	flex: 1;
+};
+
+.flex-column {
+	flex-direction: column;
+};
+
+.flex-flow {
+	flex-flow: column wrap;
+};
+
+/* 宽度百分百 */
+.width-100 {
+	width: 100%;
+}
+
+/* 最小宽度百分百 */
+.min-width-100 {
+	min-width: 100%;
+}
+
+/* 宽度百分之五十 */
+.width-half {
+	width: 50%;
+}
+
+/* 最小宽度百分之五十 */
+.min-width-half {
+	min-width: 50%;
+}
+
+/* 禁止页面滚动用 */
+.prevent {
+	height: 100vh !important;
+	overflow: hidden !important;
+}
+
+/* 头部背景展位高度 */
+.top-placeholder-height {
+	height: 80rpx;
+}
+
+/* 产品组件y轴偏移 */
+.product-components-height {
+	height: 194rpx;
+}
+
+.product-components-offter-y {
+	transform: translateY(-40rpx);
+}
+
+/* 头部标题 */
+.header-title {
+	font: {
+		weight: bold;
+	}
+};
+
+.position-sticky {
+	position: sticky;
+	top: auto;
+	left: 0;
+	z-index: 600;
+}
+
+.desc-distance{
+	margin-right: 20rpx;
+	@include rowsHeight;
+}
+
+/* 边框 */
+.border {
+	border: $border-size;
+}
+
+.flex-flow {
+	flex-flow: column wrap;
+}
+
+
+/* 盒模型 */
+.box-sizing {
+	box-sizing: border-box;
+}
+
+/* 通用阴影 */
+.box-shadow {
+	box-shadow: 4px 4px 6px #ddd;
+}
+
+.hidden {
+	overflow: hidden;
+}
+
+.font-bold {
+	font-weight: bold;
+}
+
+.tag-base-lineheight {
+	line-height: 42rpx;
+}
+
+.tabbar-height {
+	height: $tabbarHeight;
+}
+
+.margin-auto {
+	margin: auto;
+}
+
+.text-underline {
+	text-decoration: underline;
+}
+
+/* 基本的行高 */
+.base-line-height {
+	line-height: 100rpx;
+}
+
+/* 基本的缩进 */
+.base-margin-indent {
+	margin-left: 30rpx;
+}
+
+.base-padding-indent {
+	padding-left: 30rpx;
+}
+
+.base-text-indent {
+	text-indent: 30rpx;
+}
+
+/* 清除按钮触点 */
+.base-padding-close {
+	padding: 0 30rpx;
+}
+
+/* 开单编辑页 单据字段右边距 */
+.base-desc-right {
+	padding-right: 15rpx;
+}
+
+.nav-active {
+	padding: 0 13rpx 16rpx;
+	border-bottom: 4rpx solid #ffffff;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.nav-inactive {
+	padding: 0 13rpx 16rpx;
+	color: rgba(255, 255, 255, 0.3);
+}
+
+/* 边框 */
+.border {
+	border: $border-size;
+}
+
+.border-top {
+	border-top: 1px solid rgba(147, 147, 147, 0.1);
+}
+
+.border-left {
+	border-left: $border-size;
+}
+
+.border-right {
+	border-right: 1px solid rgba(144, 144, 144, 0.9);
+}
+
+.border-bottom {
+	border-bottom: $border-size;
+}
+
+.border-bottom05 {
+	border-bottom: 1rpx solid rgba(147, 147, 147, 0.1);
+}
+
+.border-top1 {
+	border-top: $border-size;
+}
+
+	
+/* margin */
+.margin-horizontal-auto {
+	margin: 0 auto;	
+}
+
+@for $i from 0 through 15 {
+	.margin-left-#{5 + $i * 5} {
+		margin-left: #{$i * 5rpx + 5rpx};
+	}
+
+	.margin-right-#{5 + $i * 5} {
+		margin-right: #{$i * 5rpx + 5rpx};
+	}
+
+	.margin-top-#{5 + $i * 5} {
+		margin-top: #{$i * 5rpx + 5rpx};
+	}
+
+	.margin-bottom-#{5 + $i * 5} {
+		margin-bottom: #{$i * 5rpx + 5rpx};
+	}
+}
+	
+/* padding */
+@for $i from 0 through 15 {
+	.padding-left-#{5 + $i * 5} {
+		padding-left: #{$i * 5rpx + 5rpx};
+	}
+
+	.padding-right-#{5 + $i * 5} {
+		padding-right: #{$i * 5rpx + 5rpx};
+	}
+
+	.padding-top-#{5 + $i * 5} {
+		padding-top: #{$i * 5rpx + 5rpx};
+	}
+
+	.padding-bottom-#{5 + $i * 5} {
+		padding-bottom: #{$i * 5rpx + 5rpx};
+	}
+}
+
+page {
+	background-color: #f5f5f5;
+	
+	/* 定位 */
+	@include createClassByKeyAndValue($marginNone, margin);
+	
+	/* 定位 */
+	@include createClass($position, position, position);
+	
+	/* 弹性水平方向对齐 */
+	@include createClass($whiteSpace, white-space, white-space);
+	
+	/* 弹性水平方向对齐 */
+	@include createClass($justify, justify, justify-content);
+
+	/* 字体颜色 */
+	@include createClass($color, color, color);
+
+	/* 背景颜色 */
+	@include createClass($bg, bg, background);
+	
+	/* 文字方向 */
+	@include createClass($align, text, text-align);
+	
+	/* 弹性垂直方向对齐 */
+	@include createClass($alignItem, align, align-items);
+	
+	/* z-index */
+	@include createClass(createFontRange(1, 1000, false), z-index, z-index);
+	
+	/* 字体大小 */
+	@include createClass(createFontRange(20, 50, true), font, font-size);
+	
+	/* 弹性容器是否换行 */
+	@include createClass($flexWrap, flex, flex-wrap);
+	
+	/* 弹窗元素方向 */
+	@include createClass($flexDirection, flex, flex-direction);
+	
+	/* 边框 */
+	// @include createClass($border, border, border);
+	
+	/* 字体间距 */
+	@include createClass(createFontRange(1, 4, true), letter-spacing, letter-spacing);
+}

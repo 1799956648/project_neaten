@@ -1,0 +1,24 @@
+/* #ifndef APP-PLUS-NVUE */
+
+// /* 全局重置样式 */
+// @import './reset';
+
+/* 字体图标 */
+// @import '@/static/fonts/iconfont.css';
+
+/* 全局变量 */
+@import './variable';
+
+/* 全局通用样式 */
+@import './class';
+
+/* 全局通用函数 */
+@import './function';
+
+/* 全局mixin */
+@import './mixin';
+
+/* 按钮样式 */
+@import './btn';
+
+/* #endif */

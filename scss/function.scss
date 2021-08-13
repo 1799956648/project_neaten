@@ -1,0 +1,17 @@
+/* 创建文字范围 */
+@function createFontRange($start: 20, $end: 50, $isAddUnit: true) {
+	$list: ();
+	@for $i from $start through $end {
+		$item: (
+			name: #{$i},
+			value: if($isAddUnit, #{$i}rpx, #{$i}) 
+		);
+		$list: append($list, $item, comma);
+	}
+	@return $list;
+}
+
+// 统计页面列表高度
+@function statisticsListHeight($listHeight){
+	@return calc(100vh - #{$listHeight} + var(--status-bar-height));
+}

@@ -1,0 +1,84 @@
+/* 全局Mixin */
+
+/* 文字溢出隐藏 */
+@mixin textEllipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* 为了兼容弹性布局平均分布写法 */
+@mixin spaceEvenly($selector) {
+
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+    }
+}
+
+/* 记录行行高 */
+@mixin rowsHeight($height: 100rpx) {
+    line-height: $height;
+}
+
+/* 伪类选中 */
+@mixin activeColor {
+    &:active {
+        background-color: $activeBackgroundColor;
+    }
+}
+
+/**
+ * 根据每个列表对象的键值创建对应类名
+ * @param {Object} $list 列表
+ * @param {Object} $prefix 属性前缀
+ * @example
+ * 	createClassByKeyAndValue((
+ * 		(
+ * 			name: top,
+ * 			value: 0
+ * 		),
+ * 	), margin);
+ * 	.margin-top-0 { margin-top: 0 };
+ */
+@mixin createClassByKeyAndValue($list, $prefix) {
+    @for $i from 1 through length($list) {
+        $item: nth($list, $i);
+
+        .#{$prefix}-#{map-get($item, name)}-#{map-get($item, value)} {
+            #{$prefix}-#{map-get($item, name)}: map-get($item, value);
+        }
+    }
+}
+
+/**
+ * 根据每个列表对象的键和固定属性值创建对应class
+ * @param {Object} $list 列表
+ * @param {Object} $prefix // 属性前缀（固定式）
+ * @param {Object} $attr // 固定属性值
+ * @example
+ * 	createClass((
+ *		(
+ *			name: strat,
+ *			value: flex-start
+ *		)
+ * ), justify, justify-content)
+ * .justify-start { justify-content: flex-start };
+ */
+@mixin createClass($list, $prefix, $attr) {
+    @for $i from 1 through length($list) {
+        $item: nth($list, $i);
+
+        .#{$prefix}-#{map-get($item, name)} {
+            #{$attr}: map-get($item, value);
+        }
+    }
+}
+
+
+/* 触点扩大 */
+@mixin touchOffset($vertical, $horizontal) {
+    padding: $vertical $horizontal;
+    margin: $vertical $horizontal;
+}
