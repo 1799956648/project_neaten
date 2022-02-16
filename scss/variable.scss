@@ -3,6 +3,15 @@
 // tabbar高度
 $tabbarHeight: 112rpx;
 
+/* 距头部组件距（状态栏高度 + header组件高度） */
+$placeholderHeaderTop: calc(var(--status-bar-height) + 90rpx);
+
+/* 头部占位背景距离（状态栏高度 + header组件高度 + search组件高度） */
+$placeholderSearchTop: calc(var(--status-bar-height) + 90rpx + 120rpx);
+
+/* 头部组件高度（包含状态栏） */
+$headerHeight: calc(var(--status-bar-height) + 90rpx);
+
 // // 背景颜色
 // $pageBackgroundColor: #f6f6f6;
 
@@ -28,6 +37,25 @@ $position: (
 	(
 		name: absolute,
 		value: absolute
+	),
+);
+
+$overflow: (
+	(
+		name: x,
+		value: auto
+	),
+	(
+		name: x,
+		value: hidden
+	),
+	(
+		name: y,
+		value: auto
+	),
+	(
+		name: y,
+		value: hidden
 	),
 );
 
@@ -216,6 +244,10 @@ $bg: (
 		name: shenhe,
 		value: linear-gradient(to right, #FEC700, #FE8113)
 	),
+	(
+		name: light-gray,
+		value: #f7f7f7	
+	)
 );
 
 /* 弹性水平方向对弈 */

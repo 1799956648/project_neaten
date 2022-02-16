@@ -1,5 +1,26 @@
 /* 全局Mixin */
 
+// 高度
+@mixin heightSize($value: 30rpx) {
+	height: $value;
+	line-height: $value;
+}
+
+// 宽度/高度
+@mixin size($width: 0, $height: 0) {
+	width: $width;
+	height: if($height == 0, $width, $height)  
+}
+
+/* 为了兼容弹性布局平均分布写法 */
+@mixin space-evenly($selector) {
+	&::before,
+	&::after {
+		content: "";
+		display: block;
+	}
+}
+	
 /* 文字溢出隐藏 */
 @mixin textEllipsis {
     overflow: hidden;
@@ -9,25 +30,35 @@
 
 /* 为了兼容弹性布局平均分布写法 */
 @mixin spaceEvenly($selector) {
-
-    &::before,
-    &::after {
-        content: "";
-        display: block;
-    }
+	&::before,
+	&::after {
+		content: "";
+		display: block;
+	}
 }
 
 /* 记录行行高 */
-@mixin rowsHeight($height: 100rpx) {
-    line-height: $height;
+@mixin rowsHeight($height: 100rpx){
+	line-height: $height;
 }
 
 /* 伪类选中 */
 @mixin activeColor {
-    &:active {
-        background-color: $activeBackgroundColor;
-    }
+	&:active{
+		background-color:$activeBackgroundColor;
+	}
 }
+/*	
+	动态创建类名
+	@include createClass((name: text, value: left), text, text-align);
+	
+	.$prefix-name: {
+		$attr: value;
+	};
+	.text-left{
+		text-align: left;
+	}
+*/
 
 /**
  * 根据每个列表对象的键值创建对应类名
@@ -42,14 +73,13 @@
  * 	), margin);
  * 	.margin-top-0 { margin-top: 0 };
  */
-@mixin createClassByKeyAndValue($list, $prefix) {
-    @for $i from 1 through length($list) {
-        $item: nth($list, $i);
-
-        .#{$prefix}-#{map-get($item, name)}-#{map-get($item, value)} {
-            #{$prefix}-#{map-get($item, name)}: map-get($item, value);
-        }
-    }
+@mixin createClassByKeyAndValue($list, $prefix){
+	@for $i from 1 through length($list) {
+		$item: nth($list, $i);
+		.#{$prefix}-#{map-get($item, name)}-#{map-get($item, value)} {
+			#{$prefix}-#{map-get($item, name)}: map-get($item, value);
+		}
+	}
 }
 
 /**
@@ -66,19 +96,50 @@
  * ), justify, justify-content)
  * .justify-start { justify-content: flex-start };
  */
-@mixin createClass($list, $prefix, $attr) {
-    @for $i from 1 through length($list) {
-        $item: nth($list, $i);
-
-        .#{$prefix}-#{map-get($item, name)} {
-            #{$attr}: map-get($item, value);
-        }
-    }
+@mixin createClass($list, $prefix, $attr){
+	@for $i from 1 through length($list) {
+		$item: nth($list, $i);
+		.#{$prefix}-#{map-get($item, name)} {
+			#{$attr}: map-get($item, value);
+		}
+	}
 }
 
 
 /* 触点扩大 */
 @mixin touchOffset($vertical, $horizontal) {
-    padding: $vertical $horizontal;
-    margin: $vertical $horizontal;
+	padding: $vertical $horizontal;
+	margin: #{-$vertical} #{-$horizontal};
+}
+
+/* 统计列表样式 */
+@mixin statisticsListStyle(){
+	.statistics-list {
+		margin: 40rpx 30rpx 0;
+	
+		.statistics-item {
+			padding: 30rpx 30rpx 0;
+	
+			&:not(:last-of-type) {
+				margin-bottom: 30rpx;
+			}
+		}
+	}
+};
+
+/* 采集上传状态样式 */
+@mixin uploadNumStyle() {
+	position: relative;
+	&::after {
+		position: absolute;
+		right: 0;
+		top: 0;
+		display: block;
+		content: '';
+		width: 15rpx;
+		height: 15rpx;
+		border-radius: 50%;
+		background-color: #ff3b30;
+		@content;
+	}
 }

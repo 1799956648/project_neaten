@@ -11,7 +11,17 @@
 	@return $list;
 }
 
-// 统计页面列表高度
-@function statisticsListHeight($listHeight){
+/* 统计页面列表高度 */
+@function statisticsListHeight($listHeight) {
 	@return calc(100vh - #{$listHeight} + var(--status-bar-height));
+}
+
+/* 距头部组件距离（状态栏高度 + header组件高度）扩展 */
+@function extendPlaceholderHeaderTop($height: 0) {
+	@return calc(var(--status-bar-height) + #{$height});
+}
+
+/* 距头部占位背景距离（状态栏高度 + header组件高度 + search组件高度）扩展 */
+@function extendPlaceholderSearchTop($height: 0) {
+	@return calc(var(--status-bar-height) + 90rpx + 120rpx + #{$height});
 }

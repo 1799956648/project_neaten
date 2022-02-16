@@ -10,7 +10,7 @@ const StatusManage = class {
 		if (!(Reflect.has(statusTask, curExe))) {
 			statusTask.default?.(ajaxData);
 			return;
-		}
+		};
 		
 		// 存在执行对应状态码
 		statusTask[curExe]?.(ajaxData);

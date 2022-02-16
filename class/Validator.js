@@ -1,4 +1,6 @@
-// Context，负责接收用户的请求，并委托给 strategy 对象
+/**
+ * @description Context，负责接收用户的请求，并委托给 strategy 对象
+ */
 const Validator = class {
 	constructor() {
 		this.strategies = null; // 具体策略类
@@ -6,7 +8,7 @@ const Validator = class {
 	}
 
 	/**
-	 * 设置策略
+	 * @description 设置策略
 	 * @param {Object} strategy 策略对象
 	 */
 	setStrategy(strategy) {
@@ -14,7 +16,7 @@ const Validator = class {
 	}
 
 	/**
-	 * 添加对应添加策略
+	 * @description 添加对应添加策略
 	 * @param {*} value 检验对象
 	 * @param {Array} rules 检验规则
 	 */
@@ -31,7 +33,7 @@ const Validator = class {
 	}
 
 	/**
-	 * 批量添加对应添加策略
+	 * @description 批量添加对应添加策略
 	 * @param {Object} matchConfig 多个检验配置对象
 	 * @param {*} matchConfig.value 检验对象
 	 * @param {Array} matchConfig.rules 检验规则
@@ -41,7 +43,7 @@ const Validator = class {
 	}
 
 	/**
-	 * 执行检测
+	 * @description 执行检测
      * @return {Object} 检测结果
 	 */
 	check() {
@@ -49,4 +51,7 @@ const Validator = class {
 	}
 };
 
-export default Validator;
+
+module.exports = Validator;
+
+// export default Validator;

@@ -2,6 +2,20 @@
 @import './mixin';
 @import './function';
 
+// 卡片样式
+%cp-content {
+	width: calc(100% - 120rpx);
+	margin: 30rpx;
+	padding: 30rpx;
+	border-radius: 7px;
+}
+
+// 色块
+%color-block {
+	text-align: center;
+	border-radius: 6px;
+}
+
 /* 文字溢出隐藏 */
 .write-over {
 	@include textEllipsis;
@@ -47,6 +61,16 @@
 /* 最小宽度百分之五十 */
 .min-width-half {
 	min-width: 50%;
+}
+
+/* 最大宽度百分之五十 */
+.max-width-half {
+	max-width: 50%;
+}
+
+/* 最大宽度百分百 */
+.max-width-full {
+	max-width: 100%;
 }
 
 /* 禁止页面滚动用 */
@@ -97,6 +121,36 @@
 	flex-flow: column wrap;
 }
 
+/* 渐变 */
+.theme-color {
+	background: linear-gradient(to right, #4d8fff, #38b9fd);
+}
+
+.theme-color-input {
+	background: linear-gradient(to right, #69b8fd, #82c3fc);
+}
+
+.theme-height {
+	height: 80rpx;
+}
+
+.uni-input-input {
+	height: auto !important;
+}
+
+/* 顶部占位 */
+.top-bj-zhanwei {
+	width: 100vw;
+	height: 80rpx;
+	position: fixed;
+	z-index: 710;
+	top: 0;
+	left: 0;
+}
+
+.tag-base-lineheight {
+	line-height: 42rpx;
+}
 
 /* 盒模型 */
 .box-sizing {
@@ -108,16 +162,25 @@
 	box-shadow: 4px 4px 6px #ddd;
 }
 
+.box-date-shadow {
+	box-shadow: 1rpx 1rpx 1rpx #ddd;
+}
+
 .hidden {
 	overflow: hidden;
 }
 
-.font-bold {
-	font-weight: bold;
+/* 时间插件 */
+.data .uni-picker-view-indicator {
+	height: 80rpx !important;
 }
 
-.tag-base-lineheight {
-	line-height: 42rpx;
+.cjq-data-bottom .uni-picker-view-indicator {
+	height: 100rpx !important;
+}
+
+.font-bold {
+	font-weight: bold;
 }
 
 .tabbar-height {
@@ -128,24 +191,65 @@
 	margin: auto;
 }
 
+/* 产品固定块 */
+.cp-position {
+	width: calc(100% - 120rpx);
+	padding: 40rpx 30rpx;
+	border-radius: 7px;
+	z-index: 710;
+	position: fixed;
+	left: 30rpx;
+}
+
 .text-underline {
 	text-decoration: underline;
 }
 
-/* 基本的行高 */
+/* 产品卡片 */
+.cp-content {
+	@extend %cp-content;
+	@extend .hidden;
+
+	&-line {
+		@include heightSize(34rpx);
+	}
+}
+
+.base-tips-padding-left {
+	padding-left: 90rpx;
+}
+
+/* 基础的 input padding-left  */
+.base-input-padding-left {
+	padding-left: 20rpx;
+}
+
+/* 基础的input高度 */
+.base-input-height {
+	height: 42rpx;
+}
+
+/* 基础的input行高 */
+.base-input-line-height {
+	line-height: 42rpx;
+}
+
+/* 基础的行高 */
 .base-line-height {
 	line-height: 100rpx;
 }
 
-/* 基本的缩进 */
+/* 基础的margin左缩进 */
 .base-margin-indent {
 	margin-left: 30rpx;
 }
 
+/* 基础的padding左缩进 */
 .base-padding-indent {
 	padding-left: 30rpx;
 }
 
+/* 基础的文本左缩进 */
 .base-text-indent {
 	text-indent: 30rpx;
 }
@@ -155,7 +259,7 @@
 	padding: 0 30rpx;
 }
 
-/* 开单编辑页 单据字段右边距 */
+/* 开单编辑页 单据字段基础的右边距 */
 .base-desc-right {
 	padding-right: 15rpx;
 }
@@ -169,6 +273,10 @@
 .nav-inactive {
 	padding: 0 13rpx 16rpx;
 	color: rgba(255, 255, 255, 0.3);
+}
+
+.upload-num-flag {
+	@include uploadNumStyle();
 }
 
 /* 边框 */
@@ -190,6 +298,10 @@
 
 .border-bottom {
 	border-bottom: $border-size;
+	
+	&:last-of-type {
+		border-bottom: none;
+	}
 }
 
 .border-bottom05 {
@@ -199,7 +311,6 @@
 .border-top1 {
 	border-top: $border-size;
 }
-
 	
 /* margin */
 .margin-horizontal-auto {
@@ -243,11 +354,33 @@
 	}
 }
 
+/* 色块 */
+@for $i from 1 through length($color-block) {
+	$item: nth($color-block, $i);
+
+	.bg-color-#{map-get($item, name)} {
+		color: map-get($item, color);
+		background-color: map-get($item, bgColor);
+		@extend %color-block;
+	}
+}
+
 page {
 	background-color: #f5f5f5;
 	
-	/* 定位 */
+	.placeholder-header-top {
+		top: $placeholderHeaderTop;
+	};
+	
+	.placeholder-search-top {
+		top: $placeholderSearchTop;
+	};
+	
+	/* margin-none */
 	@include createClassByKeyAndValue($marginNone, margin);
+	
+	/* overflow */
+	@include createClassByKeyAndValue($overflow, overflow);
 	
 	/* 定位 */
 	@include createClass($position, position, position);
@@ -287,4 +420,7 @@ page {
 	
 	/* 字体间距 */
 	@include createClass(createFontRange(1, 4, true), letter-spacing, letter-spacing);
+	
+	/* 统计列表样式 */
+	@include statisticsListStyle();
 }
